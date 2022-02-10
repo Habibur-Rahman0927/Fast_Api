@@ -7,6 +7,10 @@ class Post(BaseModel):
     content: str
     published: bool = True
 
+
+class PostCreate(Post):
+    pass
+
 class UpdatePost(BaseModel):
     title: str
     content: str
@@ -15,6 +19,7 @@ class UpdatePost(BaseModel):
 class PostRespone(Post):
     id: int
     created_at: datetime
+    owner_id: int
 
     class Config:
         orm_mode=True

@@ -18,7 +18,7 @@ def get_posts(db: Session = Depends(get_db), current_user: int = Depends(jwt.get
 
 @router.post("/", status_code = status.HTTP_201_CREATED, response_model = schema.PostRespone)
 def createpost(post: schema.Post, db: Session = Depends(get_db), current_user: int = Depends(jwt.get_current_user)):
-    new_posts = models.Post(**post.dict())
+    new_posts = models.Post(owner_id=current_user.id, **post.dict())
     db.add(new_posts)
     db.commit()
     db.refresh(new_posts)

@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from . import models, schema, utils
+from .config import settings
 from .database import engine
 from .router import post, user, auth
 

@@ -15,11 +15,18 @@ class UpdatePost(BaseModel):
     title: str
     content: str
     published: bool
+class UserResponse(BaseModel):
+    id: int
+    email: EmailStr
+    created_at: datetime
+    class Config:
+        orm_mode=True
 
 class PostRespone(Post):
     id: int
     created_at: datetime
     owner_id: int
+    owner: UserResponse
 
     class Config:
         orm_mode=True
@@ -28,13 +35,6 @@ class PostRespone(Post):
 class UserCreate(BaseModel):
     email: EmailStr
     password: str
-
-class UserResponse(BaseModel):
-    id: int
-    email: EmailStr
-    created_at: datetime
-    class Config:
-        orm_mode=True
 
 class UserLogin(BaseModel):
     email: EmailStr

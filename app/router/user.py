@@ -9,7 +9,7 @@ router = APIRouter(
 )
 
 @router.post("/", status_code = status.HTTP_201_CREATED, response_model = schema.UserResponse)
-def createpost(user: schema.UserCreate, response: Response, db: Session = Depends(get_db)):
+def create_user(user: schema.UserCreate, response: Response, db: Session = Depends(get_db)):
     # if user.email:
     #     userValid = db.query(models.User).filter(models.User.email == user.email).first()
     #     return {"msg": "User is Already Exist"}
